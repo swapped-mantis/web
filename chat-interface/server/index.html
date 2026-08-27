@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server 1</title>
+</head>
+<body>
+    <input type="text" id="txt">
+    <button type="button">Send</button>
+    <div id="display_txt">
+        <ul id="txt_list"></ul>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const input = document.getElementById('txt');
+
+        document.querySelector('button').addEventListener('click', sendText);
+
+        function sendText() {
+            const text = input.value;
+            input.value = '';
+            
+            if(text) {
+                socket.emit('chat-message', text);
+            }
+        }
+
+        socket.on('chat-message', (message) => {
+            const txtList = document.getElementById('txt_list');
+            const li = document.createElement('li');
+            li.textContent = message;
+            txtList.appendChild(li);
+        })
+    </script>
+</body>
+</html>

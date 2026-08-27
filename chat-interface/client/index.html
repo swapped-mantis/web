@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./styles.css" />
+	<title>Client</title>
+</head>
+
+<body>
+	<div class="uname-container">
+		<label for="uname">Enter username: <span style="
+        display: block;
+        ">(<i>optional</i>)</span></label>
+		<input type="text" name="uname" id="uname">
+		<button type="button" id="next-btn">Next</button>
+	</div>
+	<div class="text-body">
+		<div class="input-container">
+			<input type="text" id="txt-input">
+			<button type="button" id="snd-btn">Send</button>
+		</div>
+		<div id="display_txt">
+			<ul id="txt-list"></ul>
+		</div>
+	</div>
+	<div class="clear-container">
+		<button type="button" id="clr-btn">Clear</button>
+	</div>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="./index.js"></script>
+</body>
+
+</html>
